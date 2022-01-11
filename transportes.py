@@ -7,31 +7,48 @@ dados ={
 ############################################ Classe ##############################################
 
 class Onibus:
-    def __init__(self, nome,parada,motorista,fiscal):
+    def __init__(self, nome,rotas,motorista,fiscal):
+        if ((isinstance(nome,str)) and (isinstance(rotas,list)) and (isinstance(motorista,str)) and (isinstance(fiscal,str))):
             self.nome = nome
-            self.parada = parada
+            self.rotas = rotas
             self.motorista = motorista
             self.fiscal = fiscal
+            
+        else:
+            print("Algum atributo inválido! ")
+            print(isinstance(nome,str))
+            print((isinstance(rotas,list)))
+            print(isinstance(motorista,str))
+            print(isinstance(fiscal,str))
+            
         
-    
     def __str__(self):
-        return f" Nome ônibus: {self.nome} \n Rotas: {self.parada} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
+        return f" Nome ônibus: {self.nome} \n Rotas: {self.rotas} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
 
     def setNome(self,nome):
-        self.nome = nome
+        if(isinstance(nome,str)):
+            self.nome = nome
+        else:
+            print("Tipo inválido para o nome do ônibus")
         
-    def setParada(self,parada):  
-        self.parada = parada
+    def setRotas(self,rotas):  
+        if(isinstance(rotas,list)):
+            self.rotas = rotas
+        else:
+            print("Tipo inválido para as rotas")
     
-        
     def setMotorista(self,motorista):
-        self.motorista = motorista
-
-        
+        if(isinstance(motorista,str)):
+            self.motorista = motorista
+        else:
+            print("Tipo inválido para o nome do motorista")
+ 
     def setFiscal(self,fiscal):
-        self.fiscal = fiscal
+        if(isinstance(fiscal,str)):
+            self.fiscal = fiscal
+        else:
+            print("Tipo inválido para o nome do fiscal")
       
-
 ############################################ Funcoes ##############################################
 
 # opcoes do menu principal que mostram as ações que o usuário quer escolher na gerenciamento da rede de transportes
@@ -57,17 +74,19 @@ def menu_principal ():
 
     
 def criar_onibus ():
+    rotas =[]
     
     # colocando atributos vazios
-    onibusAux = Onibus("","","","")
+    onibusAux = Onibus("",[],"","")
     
     # nome do Ônibus
     nome = input("Digite o nome do Ônibus: ")   
     onibusAux.setNome(nome)
     
     # nome do Ponto de parada
-    parada = input("Digite o nome do Ponto de parada: ")   
-    onibusAux.setParada(parada)
+    parada = input("Digite SOMENTE um nome do Ponto de parada: ")
+    rotas.append(parada)
+    onibusAux.setRotas(rotas)
     
     # nome do Motorista
     motorista = input("Digite o nome do Motorista: ")   
@@ -86,8 +105,11 @@ def criar_onibus ():
 def mostrar_onibus (onibus):
     print ("---------------------------------------")
     print(f" Nome do ônibus: {onibus.nome}\n") 
-    print(f" Ponto de parada: {onibus.parada}\n")
-    print(f" Motorista: {onibus.motorista}\n") 
+    print(" Ponto de parada:") 
+    for rota in onibus.rotas:
+        print(f" {rota}")
+        
+    print(f"\n Motorista: {onibus.motorista}\n") 
     print(f" Fiscal: {onibus.fiscal}") 
     print ("---------------------------------------")
 
@@ -179,8 +201,8 @@ def alterar_ponto_de_parada (todos_onibus):
         parada = input("Digite o nome do Ponto de parada que deseja alterar: ")   
         parada_nova = input("Digite o NOVO nome do Ponto de parada: ")  
         for onibus in todos_onibus:
-            if (todos_onibus[onibus].parada == parada):
-                todos_onibus[onibus].parada = parada_nova
+            if (todos_onibus[onibus].rotas == parada):
+                todos_onibus[onibus].rotas = parada_nova
                 tem_parada = True
                 
                 
@@ -285,8 +307,8 @@ def deletar_ponto_de_parada (todos_onibus):
         # nome do Ponto de parada
         parada = input("Digite o nome do Ponto de parada: ")   
         for onibus in todos_onibus:
-            if (todos_onibus[onibus].parada == parada):
-                todos_onibus[onibus].parada = "-"
+            if (todos_onibus[onibus].rotas == parada):
+                todos_onibus[onibus].rotas = "-"
                 tem_parada = True
                 
                 
