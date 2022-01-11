@@ -4,6 +4,7 @@ dados ={
        "todos_onibus":{}
 }
 
+
 ############################################ Classe ##############################################
 
 class Onibus:
@@ -131,7 +132,7 @@ def menu_adicionar ():
     print('##################### MENU ADICIONAR RELAÇÃO #####################################')
     print("1. Motorista ao ônibus")
     print("2. Fiscal ao ônibus")
-    print("3. ponto de parada ao ônibus")
+    print("3. Ponto de parada ao ônibus")
     print("4. Voltar ao Menu Principal")
     print('#################################################################################')
     print()
@@ -143,14 +144,43 @@ def menu_adicionar ():
                             
     return escolha
 
+# como so pode um motorista por onibus, eu so vou poder alterar o motorista que já está cadastrado
 def adicionar_motorista_ao_onibus ():
     print("Não implementado")
 
+# como so pode um fiscal por onibus ou nenhum fiscal, eu so vou poder alterar o fiscal que já está cadastrado
 def adicionar_fiscal_ao_onibus ():
     print("Não implementado")
 
-def adicionar_ponto_de_parada_ao_onibus ():
-    print("Não implementado")
+
+# criei uma lista de rotas, entao cada onibus tem uma lista de rotas
+def adicionar_ponto_de_parada_ao_onibus (todos_onibus):
+    parada_nova=[]
+    tem_onibus = False
+    if (len(todos_onibus) > 0):
+        # nome do Ônibus
+        nome = input("Digite o nome do Ônibus que deseja adicionar ponto de parada: ")  
+        # nome do Ponto de parada
+        parada = input("Digite SOMENTE um nome do Ponto de parada que deseja adicionar ao ônibus escolhido: ")
+        parada_nova.append(parada)
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].nome == nome):
+                todos_onibus[onibus].rotas += parada_nova
+                tem_onibus = True
+                
+                
+        if (tem_onibus == True):
+            print("\nRotas alteradas!\n")
+                
+        elif (tem_onibus == False):
+            print ("\nNão existe esse onibus na lista! ")
+                
+    else:
+        print ("\nAinda não existem ônibus criados. ")
+    
+
+
+
     
 
 def menu_alterar ():  
@@ -406,7 +436,7 @@ def main():
                 
                 # opcao 3 - adicionar ponto de parada ao ônibus
                 if (escolha_menu_adicionar == "3"):
-                    adicionar_ponto_de_parada_ao_onibus ()
+                    adicionar_ponto_de_parada_ao_onibus (dados['todos_onibus'])
                     
                 # opcao 5 - voltar ao menu principal
                 if (escolha_menu_adicionar == "4"):
