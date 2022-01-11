@@ -112,7 +112,35 @@ def criar_onibus ():
  
 
 def criar_ponto_de_parada ():
-     # colocando atributos vazios
+    
+    # colocando atributos vazios
+    ponto_de_paradaAux = Ponto_de_parada("")
+    
+    # nome do Ônibus
+    nome = input("Digite o nome do Ponto de parada: ")   
+    ponto_de_paradaAux.setNome(nome)
+    
+    print("Ponto de parada criado!\n")
+    
+    return ponto_de_paradaAux
+    
+
+def criar_motorista ():
+    
+    # colocando atributos vazios
+    motoristaAux = Motorista("")
+    
+    # nome do Ônibus
+    nome = input("Digite o nome do Motorista: ")   
+    motoristaAux.setNome(nome)
+    
+    print("Motorista criado!\n")
+    
+    return motoristaAux
+
+def criar_fiscal ():
+    
+    # colocando atributos vazios
     fiscalAux = Fiscal("")
     
     # nome do Ônibus
@@ -122,13 +150,6 @@ def criar_ponto_de_parada ():
     print("Fiscal criado!\n")
     
     return fiscalAux
-    
-
-def criar_motorista ():
-    print("Não implementado")
-
-def criar_fiscal ():
-    print("Não implementado")
     
     
 def menu_mostrar ():  
@@ -165,11 +186,19 @@ def mostrar_rotas (rotas):
     else:
         print ("Ainda não existem rotas criadas. ")
 
-def mostrar_motoristas ():
-    print("Não implementado")
+def mostrar_motoristas (motoristas):
+    if (len(motoristas) > 0):
+        for motorista in motoristas: 
+            print(f" {motorista}") 
+    else:
+        print ("Ainda não existem motoristas criados. ")
 
-def mostrar_fiscais ():
-    print("Não implementado")
+def mostrar_fiscais (fiscais):
+    if (len(fiscais) > 0):
+        for fiscal in fiscais: 
+            print(f" {fiscal}") 
+    else:
+        print ("Ainda não existem fiscais criados. ")
 
 def menu_adicionar ():  
     print()
@@ -302,15 +331,18 @@ def main():
                 
                 # opcao 2 - criar ponto de parada
                 if (escolha_menu_criar == "2"):
-                    criar_ponto_de_parada ()
+                    ponto_de_paradaAux = criar_ponto_de_parada ()
+                    dados["rotas"][ponto_de_paradaAux.nome] = ponto_de_paradaAux
                 
                 # opcao 3 - criar motorista
                 if (escolha_menu_criar == "3"):
-                    criar_motorista ()
+                    motoristaAux = criar_motorista ()
+                    dados["motoristas"][motoristaAux.nome] = motoristaAux
                 
                 # opcao 4 - criar fiscal
                 if (escolha_menu_criar == "4"):
-                    criar_fiscal ()
+                    fiscalAux = criar_fiscal ()
+                    dados["fiscais"][fiscalAux.nome] = fiscalAux
                     
                 # opcao 5 - voltar ao menu principal
                 if (escolha_menu_criar == "5"):
@@ -331,15 +363,15 @@ def main():
                 
                 # opcao 2 - mostrar rotas
                 if (escolha_menu_mostrar == "2"):
-                    mostrar_rotas ()
+                    mostrar_rotas(dados['rotas'])
                 
                 # opcao 3 - mostrar motoristas
                 if (escolha_menu_mostrar == "3"):
-                    mostrar_motoristas ()
+                    mostrar_motoristas(dados['motoristas'])
                 
                 # opcao 4 - mostrar fiscais
                 if (escolha_menu_mostrar == "4"):
-                    mostrar_fiscais ()
+                    mostrar_fiscais(dados['fiscais'])
                     
                 # opcao 5 - voltar ao menu principal
                 if (escolha_menu_mostrar == "5"):
