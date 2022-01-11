@@ -15,7 +15,7 @@ class Onibus:
         
     
     def __str__(self):
-        return f" Nome ônibus: {self.nome} \n Ponto de parada: {self.parada} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
+        return f" Nome ônibus: {self.nome} \n Rotas: {self.parada} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
 
     def setNome(self,nome):
         self.nome = nome
@@ -137,9 +137,8 @@ def menu_alterar ():
     print("1. Dados do ônibus")
     print("2. Dados da parada")
     print("3. Dados do motorista")
-    print("4. Dados do dados do fiscal")
-    print("5.Rota do ônibus")  
-    print("6. Voltar ao Menu Principal")
+    print("4. Dados do dados do fiscal") 
+    print("5. Voltar ao Menu Principal")
     print('#################################################################################')
     print()
     
@@ -152,20 +151,89 @@ def menu_alterar ():
 
 
 
-def alterar_dados_onibus ():
-    print("Não implementado")
+def alterar_onibus (todos_onibus):
+    tem_onibus = False
+    if (len(todos_onibus) > 0):
+        # nome do Ônibus
+        nome = input("Digite o nome do ônibus que deseja alterar: ")   
+        nome_nova = input("Digite o NOVO nome do ônibus: ")  
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].nome == nome):
+                todos_onibus[onibus].nome = nome_nova
+                tem_onibus = True
+                
+                
+        if (tem_onibus == True):
+            print("\nOnibus alterado!\n")
+                
+        elif (tem_onibus == False):
+            print ("\nNão existe esse onibus na lista! ")
+                
+    else:
+        print ("\nAinda não existem ônibus criados. ")
 
-def alterar_dados_parada ():
-    print("Não implementado")
+def alterar_ponto_de_parada (todos_onibus):
+    tem_parada = False
+    if (len(todos_onibus) > 0):
+        # nome do Ponto de parada
+        parada = input("Digite o nome do Ponto de parada que deseja alterar: ")   
+        parada_nova = input("Digite o NOVO nome do Ponto de parada: ")  
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].parada == parada):
+                todos_onibus[onibus].parada = parada_nova
+                tem_parada = True
+                
+                
+        if (tem_parada == True):
+            print("\nPonto de parada alterado!\n")
+                
+        elif (tem_parada == False):
+            print ("\nNão existe esse ponto de parada na lista! ")
+                
+    else:
+        print ("\nAinda não existem ônibus criados. ")
     
-def alterar_dados_motorista ():
-    print("Não implementado")
+def alterar_motorista (todos_onibus):
+    tem_motorista = False
+    if (len(todos_onibus) > 0):
+        # nome do Motorista
+        motorista = input("Digite o nome do motorista que deseja alterar: ")   
+        motorista_nova = input("Digite o NOVO nome do motorista: ")  
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].motorista == motorista):
+                todos_onibus[onibus].motorista = motorista_nova
+                tem_motorista = True
+                
+                
+        if (tem_motorista == True):
+            print("\nMotorista alterado!\n")
+                
+        elif (tem_motorista == False):
+            print ("\nNão existe esse motorista na lista! ")
+                
+    else:
+        print ("\nAinda não existem ônibus criados. ")
 
-def alterar_dados_fiscal ():
-    print("Não implementado")
-
-def alterar_rota_onibus ():
-    print("Não implementado")
+def alterar_fiscal (todos_onibus):
+    tem_fiscal = False
+    if (len(todos_onibus) > 0):
+        # nome do Fiscal
+        fiscal = input("Digite o nome do fiscal que deseja alterar: ")   
+        fiscal_nova = input("Digite o NOVO nome do fiscal: ") 
+      
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].fiscal == fiscal):
+                todos_onibus[onibus].fiscal = fiscal_nova
+                tem_fiscal = True
+            
+        if (tem_fiscal == True):
+            print("\nFiscal alterado\n")
+                
+        elif (tem_fiscal == False):
+            print ("\nNão existe esse fiscal na lista! ")
+                
+    else:
+        print ("\nAinda não existem ônibus criados. ")
 
 
 def menu_deletar ():  
@@ -201,7 +269,7 @@ def deletar_onibus (todos_onibus):
                 
                 
         if (tem_onibus == True):
-            print("Onibus removido!\n")
+            print("\nOnibus removido!\n")
                 
         elif (tem_onibus == False):
             print ("\nNão existe esse onibus na lista! ")
@@ -223,7 +291,7 @@ def deletar_ponto_de_parada (todos_onibus):
                 
                 
         if (tem_parada == True):
-            print("Fiscal removido!\n")
+            print("\nPonto de parada removido!\n")
                 
         elif (tem_parada == False):
             print ("\nNão existe esse ponto de parada na lista! ")
@@ -243,7 +311,7 @@ def deletar_motorista (todos_onibus):
                 
                 
         if (tem_motorista == True):
-            print("Fiscal removido!\n")
+            print("\nMotorista removido!\n")
                 
         elif (tem_motorista == False):
             print ("\nNão existe esse motorista na lista! ")
@@ -263,7 +331,7 @@ def deletar_fiscal (todos_onibus):
                 tem_fiscal = True
             
         if (tem_fiscal == True):
-            print("Fiscal removido!\n")
+            print("\nFiscal removido!\n")
                 
         elif (tem_fiscal == False):
             print ("\nNão existe esse fiscal na lista! ")
@@ -332,26 +400,23 @@ def main():
                 
                 # opcao 1 - alterar dados do ônibus
                 if (escolha_menu_alterar == "1"):
-                    alterar_dados_onibus ()
+                     alterar_onibus(dados['todos_onibus'])
                 
                 # opcao 2 - alterar dados da parada
                 if (escolha_menu_alterar == "2"):
-                    alterar_dados_parada ()
+                    alterar_ponto_de_parada(dados['todos_onibus'])
                 
                 # opcao 3 - alterar dados do motorista
                 if (escolha_menu_alterar == "3"):
-                    alterar_dados_motorista ()
+                    alterar_motorista(dados['todos_onibus'])
                     
                 # opcao 4 - alterar dados do fiscal
-                if (escolha_menu_alterar == "3"):
-                    alterar_dados_fiscal ()
-                
-                 # opcao 5 - alterar rota do ônibus
-                if (escolha_menu_alterar == "3"):
-                    alterar_rota_onibus ()
-                    
-                # opcao 6 - voltar ao menu principal
                 if (escolha_menu_alterar == "4"):
+                    alterar_fiscal(dados['todos_onibus'])
+                
+                    
+                # opcao 5 - voltar ao menu principal
+                if (escolha_menu_alterar == "5"):
                     voltar_menu_principal = True
             
             
