@@ -17,11 +17,6 @@ class Onibus:
             
         else:
             print("Algum atributo inválido! ")
-            print(isinstance(nome,str))
-            print((isinstance(rotas,list)))
-            print(isinstance(motorista,str))
-            print(isinstance(fiscal,str))
-            
         
     def __str__(self):
         return f" Nome ônibus: {self.nome} \n Rotas: {self.rotas} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
