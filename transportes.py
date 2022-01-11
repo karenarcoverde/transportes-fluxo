@@ -477,15 +477,15 @@ def main():
                 
                 # opcao 2 - deletar ponto de parada
                 if (escolha_menu_deletar == "2"):
-                    deletar_ponto_de_parada ()
+                    deletar_onibus(dados['rotas'])
                 
                 # opcao 3 - deletar motorista
                 if (escolha_menu_deletar == "3"):
-                    deletar_motorista ()
+                    deletar_onibus(dados['motoristas'])
                 
                 # opcao 4 - deletar fiscal
                 if (escolha_menu_deletar == "4"):
-                    deletar_fiscal ()
+                    deletar_onibus(dados['fiscais'])
                     
                 # opcao 5 - voltar ao menu principal
                 if (escolha_menu_deletar == "5"):
