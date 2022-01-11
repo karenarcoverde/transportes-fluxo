@@ -120,7 +120,16 @@ def mostrar_todos_onibus (todos_onibus):
         for onibus in todos_onibus:
             print()
             print ("---------------------------------------")
-            print(todos_onibus[onibus])
+            print(" Nome ônibus:",todos_onibus[onibus].nome)
+            print()
+            print (" Rotas:")
+            for rota in todos_onibus[onibus].rotas:
+                print(f" {rota}")
+            print()
+            print(" Motorista:",todos_onibus[onibus].motorista)
+            print()
+            print(" Fiscal:",todos_onibus[onibus].fiscal)
+            print()
             print ("---------------------------------------")
             
     else:
