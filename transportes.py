@@ -183,10 +183,6 @@ def adicionar_ponto_de_parada_ao_onibus (todos_onibus):
         print ("\nAinda não existem ônibus criados. ")
     
 
-
-
-    
-
 def menu_alterar ():  
     print()
     print('##################### MENU ALTERAR ############################################')
@@ -336,24 +332,28 @@ def deletar_onibus (todos_onibus):
    
 
 def deletar_ponto_de_parada (todos_onibus): 
+     
     tem_parada = False
     if (len(todos_onibus) > 0):
         # nome do Ponto de parada
-        parada = input("Digite o nome do Ponto de parada: ")   
+        parada = input("Digite o nome do Ponto de parada que deseja deletar: ")
         for onibus in todos_onibus:
-            if (todos_onibus[onibus].rotas == parada):
-                todos_onibus[onibus].rotas = "-"
-                tem_parada = True
+            for i in range (len(todos_onibus[onibus].rotas)):
+                if (todos_onibus[onibus].rotas[i] == parada):
+                    todos_onibus[onibus].rotas[i] = "-"                
+                    tem_parada = True
                 
                 
         if (tem_parada == True):
-            print("\nPonto de parada removido!\n")
+            print("\nPonto de parada deletado!\n")
                 
         elif (tem_parada == False):
             print ("\nNão existe esse ponto de parada na lista! ")
                 
     else:
         print ("\nAinda não existem ônibus criados. ")
+    
+    
 
 def deletar_motorista (todos_onibus):
     tem_motorista = False
