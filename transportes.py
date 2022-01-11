@@ -1,13 +1,59 @@
 
 
+############################################ Listas ##############################################
+
+dados ={
+        "todos_onibus":{},
+        "rotas":{},
+        "motoristas":{},
+        "fiscais":{}
+}
 
 
+############################################ Classes ##############################################
 
+class Onibus:
+    def __init__(self, nome):
+        self.nome = nome
+    
+    def __str__(self):
+        return f"Ônibus nome: {self.nome}" 
+    
+    def setNome(self,nome):
+        self.nome = nome
+    
+    
+class Ponto_de_parada:
+    def __init__(self, nome):
+        self.nome = nome
+    
+    def __str__(self):
+        return f"Ponto de parada nome: {self.nome}" 
+    
+    def setNome(self,nome):
+        self.nome = nome
 
+class Motorista:
+    def __init__(self, nome):
+        self.nome = nome
+    
+    def __str__(self):
+        return f"Motorista nome: {self.nome}" 
+    
+    def setNome(self,nome):
+        self.nome = nome
+    
+class Fiscal:
+    def __init__(self, nome):
+        self.nome = nome
+    
+    def __str__(self):
+        return f"Fiscal nome: {self.nome}" 
+    
+    def setNome(self,nome):
+        self.nome = nome
 
-
-
-
+############################################ Funcoes ##############################################
 
 # opcoes do menu principal que mostram as ações que o usuário quer escolher na gerenciamento da rede de transportes
 def menu_principal ():
@@ -51,10 +97,32 @@ def menu_criar ():
 
     
 def criar_onibus ():
-    print("Não implementado")
+    
+    # colocando atributos vazios
+    onibusAux = Onibus("")
+    
+    # nome do Ônibus
+    nome = input("Digite o nome do Ônibus: ")   
+    onibusAux.setNome(nome)
+    
+    print("Ônibus criado!\n")
+    
+    return onibusAux
+    
+ 
 
 def criar_ponto_de_parada ():
-    print("Não implementado")
+     # colocando atributos vazios
+    fiscalAux = Fiscal("")
+    
+    # nome do Ônibus
+    nome = input("Digite o nome do Fiscal: ")   
+    fiscalAux.setNome(nome)
+    
+    print("Fiscal criado!\n")
+    
+    return fiscalAux
+    
 
 def criar_motorista ():
     print("Não implementado")
@@ -83,11 +151,19 @@ def menu_mostrar ():
 
 
     
-def mostrar_onibus ():
-    print("Não implementado")
-
-def mostrar_rotas ():
-    print("Não implementado")
+def mostrar_onibus (todos_onibus):
+    if (len(todos_onibus) > 0):
+        for onibus in todos_onibus: 
+            print(f" {onibus}") 
+    else:
+        print ("Ainda não existem ônibus criados. ")
+    
+def mostrar_rotas (rotas):
+    if (len(rotas) > 0):
+        for ponto_de_parada in rotas: 
+            print(f" {ponto_de_parada}") 
+    else:
+        print ("Ainda não existem rotas criadas. ")
 
 def mostrar_motoristas ():
     print("Não implementado")
@@ -193,9 +269,13 @@ def deletar_motorista ():
 def deletar_fiscal ():
     print("Não implementado")
     
+    
+    
 # Mostra na tela que o programa terminará
 def finalizar_programa ():
     print ("\n##################### Fim do Programa ###############################\n")
+    
+    
         
 ########################### Main #####################################
 
@@ -217,7 +297,8 @@ def main():
                 
                 # opcao 1 - criar ônibus:
                 if (escolha_menu_criar == "1"):
-                    criar_onibus ()
+                    onibusAux = criar_onibus ()
+                    dados["todos_onibus"][onibusAux.nome] = onibusAux
                 
                 # opcao 2 - criar ponto de parada
                 if (escolha_menu_criar == "2"):
@@ -246,7 +327,7 @@ def main():
                 
                 # opcao 1 - mostrar ônibus:
                 if (escolha_menu_mostrar == "1"):
-                    mostrar_onibus ()
+                    mostrar_onibus(dados['todos_onibus'])
                 
                 # opcao 2 - mostrar rotas
                 if (escolha_menu_mostrar == "2"):
