@@ -320,7 +320,7 @@ def deletar_motorista (motoristas):
 def deletar_fiscal (fiscais):
     if (len(fiscais) > 0):
         # nome do Fiscal
-        nome = input("Digite o nome do Ônibus: ")   
+        nome = input("Digite o nome do Fiscal: ")   
         del dados["fiscais"][nome]
         print("Fiscal removido!\n")
     else:
@@ -477,15 +477,15 @@ def main():
                 
                 # opcao 2 - deletar ponto de parada
                 if (escolha_menu_deletar == "2"):
-                    deletar_onibus(dados['rotas'])
+                    deletar_ponto_de_parada(dados['rotas'])
                 
                 # opcao 3 - deletar motorista
                 if (escolha_menu_deletar == "3"):
-                    deletar_onibus(dados['motoristas'])
+                    deletar_motorista(dados['motoristas'])
                 
                 # opcao 4 - deletar fiscal
                 if (escolha_menu_deletar == "4"):
-                    deletar_onibus(dados['fiscais'])
+                    deletar_fiscal(dados['fiscais'])
                     
                 # opcao 5 - voltar ao menu principal
                 if (escolha_menu_deletar == "5"):
