@@ -1,57 +1,37 @@
-
-
-############################################ Dicionarios ############################################
+############################################ Dicionario ############################################
 
 dados ={
-        "todos_onibus":{},
-        "rotas":{},
-        "motoristas":{},
-        "fiscais":{}
+       "todos_onibus":{}
 }
 
-
-############################################ Classes ##############################################
+############################################ Classe ##############################################
 
 class Onibus:
-    def __init__(self, nome):
-        self.nome = nome
+    def __init__(self, nome,parada,motorista,fiscal):
+            self.nome = nome
+            self.parada = parada
+            self.motorista = motorista
+            self.fiscal = fiscal
+        
     
     def __str__(self):
-        return f"Ônibus nome: {self.nome}" 
-    
-    def setNome(self,nome):
-        self.nome = nome
-    
-    
-class Ponto_de_parada:
-    def __init__(self, nome):
-        self.nome = nome
-    
-    def __str__(self):
-        return f"Ponto de parada nome: {self.nome}" 
-    
-    def setNome(self,nome):
-        self.nome = nome
+        return f" Nome ônibus: {self.nome} \n Ponto de parada: {self.parada} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
 
-class Motorista:
-    def __init__(self, nome):
-        self.nome = nome
-    
-    def __str__(self):
-        return f"Motorista nome: {self.nome}" 
-    
+    # o nome do onibus pode ser inteiro ou string, por exemplo: TRONCAL 5 E 485
     def setNome(self,nome):
         self.nome = nome
+        
+    def setParada(self,parada):  
+        self.parada = parada
     
-class Fiscal:
-    def __init__(self, nome):
-        self.nome = nome
-    
-    def __str__(self):
-        return f"Fiscal nome: {self.nome}" 
-    
-    def setNome(self,nome):
-        self.nome = nome
+        
+    def setMotorista(self,motorista):
+        self.motorista = motorista
+
+        
+    def setFiscal(self,fiscal):
+        self.fiscal = fiscal
+      
 
 ############################################ Funcoes ##############################################
 
@@ -60,8 +40,8 @@ def menu_principal ():
     print()
     print('##################### MENU PRINCIPAL ############################################')
     print("############# SISTEMA DE GERENCIAMENTO DE UMA REDE DE TRANSPORTES ###############")
-    print("1. Criar")
-    print("2. Mostrar")
+    print("1. Criar Ônibus, Ponto de parada, Motorista e Fiscal")
+    print("2. Mostrar Ônibus, Ponto de parada, Motorista e Fiscal")
     print("3. Adicionar")
     print("4. Alterar")
     print ("5. Deletar")
@@ -76,129 +56,54 @@ def menu_principal ():
                             
     return escolha
 
-def menu_criar ():  
-    print()
-    print('##################### MENU CRIAR ############################################')
-    print("1. Ônibus")
-    print("2. Ponto de parada")
-    print("3. Motorista")
-    print("4. Fiscal")
-    print("5. Voltar ao Menu Principal")
-    print('#################################################################################')
-    print()
-    
-    escolha = input("Digite o número da opção desejada: ")
-    
-    while (escolha not in ('1','2','3','4','5')):
-        escolha = input("Opção inválida. Digite novamente: ")
-                            
-    return escolha
-
-
     
 def criar_onibus ():
     
     # colocando atributos vazios
-    onibusAux = Onibus("")
+    onibusAux = Onibus("","","","")
     
     # nome do Ônibus
     nome = input("Digite o nome do Ônibus: ")   
     onibusAux.setNome(nome)
     
-    print("Ônibus criado!\n")
-    
-    return onibusAux
-    
- 
-
-def criar_ponto_de_parada ():
-    
-    # colocando atributos vazios
-    ponto_de_paradaAux = Ponto_de_parada("")
-    
     # nome do Ponto de parada
-    nome = input("Digite o nome do Ponto de parada: ")   
-    ponto_de_paradaAux.setNome(nome)
-    
-    print("Ponto de parada criado!\n")
-    
-    return ponto_de_paradaAux
-    
-
-def criar_motorista ():
-    
-    # colocando atributos vazios
-    motoristaAux = Motorista("")
+    parada = input("Digite o nome do Ponto de parada: ")   
+    onibusAux.setParada(parada)
     
     # nome do Motorista
-    nome = input("Digite o nome do Motorista: ")   
-    motoristaAux.setNome(nome)
-    
-    print("Motorista criado!\n")
-    
-    return motoristaAux
-
-def criar_fiscal ():
-    
-    # colocando atributos vazios
-    fiscalAux = Fiscal("")
+    motorista = input("Digite o nome do Motorista: ")   
+    onibusAux.setMotorista(motorista)
     
     # nome do Fiscal
-    nome = input("Digite o nome do Fiscal: ")   
-    fiscalAux.setNome(nome)
+    fiscal = input("Digite o nome do Fiscal: ")   
+    onibusAux.setFiscal(fiscal)
     
-    print("Fiscal criado!\n")
+    print ("\n Ônibus criado com sucesso!\n ")
+    mostrar_onibus(onibusAux)
+    return onibusAux
     
-    return fiscalAux
     
+def mostrar_onibus (onibus):
+    print ("---------------------------------------")
+    print(f" Nome do ônibus: {onibus.nome}\n") 
+    print(f" Ponto de parada: {onibus.parada}\n")
+    print(f" Motorista: {onibus.motorista}\n") 
+    print(f" Fiscal: {onibus.fiscal}") 
+    print ("---------------------------------------")
     
-def menu_mostrar ():  
-    print()
-    print('##################### MENU MOSTRAR ############################################')
-    print("1. Ônibus")
-    print("2. Rotas")
-    print("3. Motoristas")
-    print("4. Fiscais")
-    print("5. Voltar ao Menu Principal")
-    print('#################################################################################')
-    print()
-    
-    escolha = input("Digite o número da opção desejada: ")
-    
-    while (escolha not in ('1','2','3','4','5')):
-        escolha = input("Opção inválida. Digite novamente: ")
-                            
-    return escolha
-
-
-    
-def mostrar_onibus (todos_onibus):
-    if (len(todos_onibus) > 0):
-        for onibus in todos_onibus: 
-            print(f" {onibus}") 
+def mostrar_todos_onibus (todos_onibus):
+    if (len(todos_onibus) > 0 ):
+        for onibus in todos_onibus:
+            print()
+            print ("---------------------------------------")
+            print(todos_onibus[onibus])
+            print ("---------------------------------------")
+            
     else:
-        print ("Ainda não existem ônibus criados. ")
+        print ("Nao foi cadastrado nenhum onibus ainda! ")
     
-def mostrar_rotas (rotas):
-    if (len(rotas) > 0):
-        for ponto_de_parada in rotas: 
-            print(f" {ponto_de_parada}") 
-    else:
-        print ("Ainda não existem rotas criadas. ")
 
-def mostrar_motoristas (motoristas):
-    if (len(motoristas) > 0):
-        for motorista in motoristas: 
-            print(f" {motorista}") 
-    else:
-        print ("Ainda não existem motoristas criados. ")
-
-def mostrar_fiscais (fiscais):
-    if (len(fiscais) > 0):
-        for fiscal in fiscais: 
-            print(f" {fiscal}") 
-    else:
-        print ("Ainda não existem fiscais criados. ")
+    
 
 def menu_adicionar ():  
     print()
@@ -344,68 +249,15 @@ def main():
         
         escolha_menu_principal = menu_principal ()
         
-        
-        # opcao 1 - criar:
+        # opcao 1 - criar Ônibus, ponto de parada, motorista, fiscal:
         if (escolha_menu_principal == "1"):
-            voltar_menu_principal = False
-            
-            while (voltar_menu_principal == False):
-                escolha_menu_criar = menu_criar ()
-                
-                # opcao 1 - criar ônibus:
-                if (escolha_menu_criar == "1"):
-                    onibusAux = criar_onibus ()
-                    dados["todos_onibus"][onibusAux.nome] = onibusAux
-                
-                # opcao 2 - criar ponto de parada
-                if (escolha_menu_criar == "2"):
-                    ponto_de_paradaAux = criar_ponto_de_parada ()
-                    dados["rotas"][ponto_de_paradaAux.nome] = ponto_de_paradaAux
-                
-                # opcao 3 - criar motorista
-                if (escolha_menu_criar == "3"):
-                    motoristaAux = criar_motorista ()
-                    dados["motoristas"][motoristaAux.nome] = motoristaAux
-                
-                # opcao 4 - criar fiscal
-                if (escolha_menu_criar == "4"):
-                    fiscalAux = criar_fiscal ()
-                    dados["fiscais"][fiscalAux.nome] = fiscalAux
-                    
-                # opcao 5 - voltar ao menu principal
-                if (escolha_menu_criar == "5"):
-                    voltar_menu_principal = True
-            
+            onibusAux = criar_onibus ()
+            dados["todos_onibus"][onibusAux.nome] = onibusAux
             
         
-        # opcao 2 - mostrar:    
+        # opcao 2 - mostrar Ônibus, ponto de parada, motorista, fiscal:  
         if (escolha_menu_principal == "2"):
-            voltar_menu_principal = False
-            
-            while (voltar_menu_principal == False):
-                escolha_menu_mostrar = menu_mostrar ()
-                
-                # opcao 1 - mostrar ônibus:
-                if (escolha_menu_mostrar == "1"):
-                    mostrar_onibus(dados['todos_onibus'])
-                
-                # opcao 2 - mostrar rotas
-                if (escolha_menu_mostrar == "2"):
-                    mostrar_rotas(dados['rotas'])
-                
-                # opcao 3 - mostrar motoristas
-                if (escolha_menu_mostrar == "3"):
-                    mostrar_motoristas(dados['motoristas'])
-                
-                # opcao 4 - mostrar fiscais
-                if (escolha_menu_mostrar == "4"):
-                    mostrar_fiscais(dados['fiscais'])
-                    
-                # opcao 5 - voltar ao menu principal
-                if (escolha_menu_mostrar == "5"):
-                    voltar_menu_principal = True
-            
-            
+            mostrar_todos_onibus(dados['todos_onibus'])
             
         # opcao 3 - adicionar relação:
         if (escolha_menu_principal == "3"):
