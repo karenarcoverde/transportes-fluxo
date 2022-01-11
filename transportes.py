@@ -340,8 +340,9 @@ def deletar_ponto_de_parada (todos_onibus):
         for onibus in todos_onibus:
             for i in range (len(todos_onibus[onibus].rotas)):
                 if (todos_onibus[onibus].rotas[i] == parada):
-                    todos_onibus[onibus].rotas[i] = "-"                
+                    del todos_onibus[onibus].rotas[i]          
                     tem_parada = True
+                break
                 
                 
         if (tem_parada == True):
