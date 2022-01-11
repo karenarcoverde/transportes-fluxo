@@ -1,6 +1,6 @@
 
 
-############################################ Listas ##############################################
+############################################ Dicionarios ############################################
 
 dados ={
         "todos_onibus":{},
@@ -116,7 +116,7 @@ def criar_ponto_de_parada ():
     # colocando atributos vazios
     ponto_de_paradaAux = Ponto_de_parada("")
     
-    # nome do Ônibus
+    # nome do Ponto de parada
     nome = input("Digite o nome do Ponto de parada: ")   
     ponto_de_paradaAux.setNome(nome)
     
@@ -130,7 +130,7 @@ def criar_motorista ():
     # colocando atributos vazios
     motoristaAux = Motorista("")
     
-    # nome do Ônibus
+    # nome do Motorista
     nome = input("Digite o nome do Motorista: ")   
     motoristaAux.setNome(nome)
     
@@ -143,7 +143,7 @@ def criar_fiscal ():
     # colocando atributos vazios
     fiscalAux = Fiscal("")
     
-    # nome do Ônibus
+    # nome do Fiscal
     nome = input("Digite o nome do Fiscal: ")   
     fiscalAux.setNome(nome)
     
@@ -286,17 +286,45 @@ def menu_deletar ():
 
 
     
-def deletar_onibus ():
-    print("Não implementado")
+def deletar_onibus (todos_onibus):
+    
+    if (len(todos_onibus) > 0):
+        # nome do Ônibus
+        nome = input("Digite o nome do Ônibus: ")   
+        del dados["todos_onibus"][nome]
+        print("Ônibus removido!\n")
+    else:
+        print ("Ainda não existem ônibus criados. ")
+     
+   
 
-def deletar_ponto_de_parada ():
-    print("Não implementado")
+def deletar_ponto_de_parada (rotas):
+    
+    if (len(rotas) > 0):
+        # nome do Ponto de parada
+        nome = input("Digite o nome do Ponto de parada: ")   
+        del dados["rotas"][nome]
+        print("Ponto de parada removido!\n")
+    else:
+        print ("Ainda não existem rotas criadas. ")
 
-def deletar_motorista ():
-    print("Não implementado")
+def deletar_motorista (motoristas):
+    if (len(motoristas) > 0):
+        # nome do Motorista
+        nome = input("Digite o nome do Motorista: ")   
+        del dados["motoristas"][nome]
+        print("Motorista removido!\n")
+    else:
+        print ("Ainda não existem motoristas criados. ")
 
-def deletar_fiscal ():
-    print("Não implementado")
+def deletar_fiscal (fiscais):
+    if (len(fiscais) > 0):
+        # nome do Fiscal
+        nome = input("Digite o nome do Ônibus: ")   
+        del dados["fiscais"][nome]
+        print("Fiscal removido!\n")
+    else:
+        print ("Ainda não existem fiscais criados. ")
     
     
     
@@ -445,7 +473,7 @@ def main():
                 
                 # opcao 1 - deletar ônibus:
                 if (escolha_menu_deletar == "1"):
-                    deletar_onibus ()
+                    deletar_onibus(dados['todos_onibus'])
                 
                 # opcao 2 - deletar ponto de parada
                 if (escolha_menu_deletar == "2"):
