@@ -17,7 +17,6 @@ class Onibus:
     def __str__(self):
         return f" Nome ônibus: {self.nome} \n Ponto de parada: {self.parada} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
 
-    # o nome do onibus pode ser inteiro ou string, por exemplo: TRONCAL 5 E 485
     def setNome(self,nome):
         self.nome = nome
         
@@ -42,7 +41,7 @@ def menu_principal ():
     print("############# SISTEMA DE GERENCIAMENTO DE UMA REDE DE TRANSPORTES ###############")
     print("1. Criar Ônibus, Ponto de parada, Motorista e Fiscal")
     print("2. Mostrar Ônibus, Ponto de parada, Motorista e Fiscal")
-    print("3. Adicionar")
+    print("3. Adicionar Relação")
     print("4. Alterar")
     print ("5. Deletar")
     print("6. Sair do Programa")
@@ -82,7 +81,8 @@ def criar_onibus ():
     mostrar_onibus(onibusAux)
     return onibusAux
     
-    
+
+# mostra as informacoes do onibus depois de criá-lo
 def mostrar_onibus (onibus):
     print ("---------------------------------------")
     print(f" Nome do ônibus: {onibus.nome}\n") 
@@ -90,7 +90,8 @@ def mostrar_onibus (onibus):
     print(f" Motorista: {onibus.motorista}\n") 
     print(f" Fiscal: {onibus.fiscal}") 
     print ("---------------------------------------")
-    
+
+# mostra a lista com todos os onibus e suas respectivas informacoes
 def mostrar_todos_onibus (todos_onibus):
     if (len(todos_onibus) > 0 ):
         for onibus in todos_onibus:
@@ -101,8 +102,6 @@ def mostrar_todos_onibus (todos_onibus):
             
     else:
         print ("Nao foi cadastrado nenhum onibus ainda! ")
-    
-
     
 
 def menu_adicionar ():  
@@ -122,8 +121,6 @@ def menu_adicionar ():
                             
     return escolha
 
-
-    
 def adicionar_motorista_ao_onibus ():
     print("Não implementado")
 
@@ -193,43 +190,86 @@ def menu_deletar ():
     
 def deletar_onibus (todos_onibus):
     
+    tem_onibus = False
     if (len(todos_onibus) > 0):
         # nome do Ônibus
-        nome = input("Digite o nome do Ônibus: ")   
-        del dados["todos_onibus"][nome]
-        print("Ônibus removido!\n")
+        nome = input("Digite o nome do ônibus: ")   
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].nome == nome):
+                todos_onibus[onibus].nome = "-"
+                tem_onibus = True
+                
+                
+        if (tem_onibus == True):
+            print("Onibus removido!\n")
+                
+        elif (tem_onibus == False):
+            print ("\nNão existe esse onibus na lista! ")
+                
     else:
-        print ("Ainda não existem ônibus criados. ")
+        print ("\nAinda não existem ônibus criados. ")
      
    
 
-def deletar_ponto_de_parada (rotas):
-    
-    if (len(rotas) > 0):
+def deletar_ponto_de_parada (todos_onibus): 
+    tem_parada = False
+    if (len(todos_onibus) > 0):
         # nome do Ponto de parada
-        nome = input("Digite o nome do Ponto de parada: ")   
-        del dados["rotas"][nome]
-        print("Ponto de parada removido!\n")
+        parada = input("Digite o nome do Ponto de parada: ")   
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].parada == parada):
+                todos_onibus[onibus].parada = "-"
+                tem_parada = True
+                
+                
+        if (tem_parada == True):
+            print("Fiscal removido!\n")
+                
+        elif (tem_parada == False):
+            print ("\nNão existe esse ponto de parada na lista! ")
+                
     else:
-        print ("Ainda não existem rotas criadas. ")
+        print ("\nAinda não existem ônibus criados. ")
 
-def deletar_motorista (motoristas):
-    if (len(motoristas) > 0):
+def deletar_motorista (todos_onibus):
+    tem_motorista = False
+    if (len(todos_onibus) > 0):
         # nome do Motorista
-        nome = input("Digite o nome do Motorista: ")   
-        del dados["motoristas"][nome]
-        print("Motorista removido!\n")
+        motorista = input("Digite o nome do Motorista: ")   
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].motorista == motorista):
+                todos_onibus[onibus].motorista = "-"
+                tem_motorista = True
+                
+                
+        if (tem_motorista == True):
+            print("Fiscal removido!\n")
+                
+        elif (tem_motorista == False):
+            print ("\nNão existe esse motorista na lista! ")
+                
     else:
-        print ("Ainda não existem motoristas criados. ")
+        print ("\nAinda não existem ônibus criados. ")
+    
 
-def deletar_fiscal (fiscais):
-    if (len(fiscais) > 0):
+def deletar_fiscal (todos_onibus):
+    tem_fiscal = False
+    if (len(todos_onibus) > 0):
         # nome do Fiscal
-        nome = input("Digite o nome do Fiscal: ")   
-        del dados["fiscais"][nome]
-        print("Fiscal removido!\n")
+        fiscal = input("Digite o nome do Fiscal: ")   
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].fiscal == fiscal):
+                todos_onibus[onibus].fiscal = "-"
+                tem_fiscal = True
+            
+        if (tem_fiscal == True):
+            print("Fiscal removido!\n")
+                
+        elif (tem_fiscal == False):
+            print ("\nNão existe esse fiscal na lista! ")
+                
     else:
-        print ("Ainda não existem fiscais criados. ")
+        print ("\nAinda não existem ônibus criados. ")
     
     
     
@@ -329,15 +369,15 @@ def main():
                 
                 # opcao 2 - deletar ponto de parada
                 if (escolha_menu_deletar == "2"):
-                    deletar_ponto_de_parada(dados['rotas'])
+                    deletar_ponto_de_parada(dados['todos_onibus'])
                 
                 # opcao 3 - deletar motorista
                 if (escolha_menu_deletar == "3"):
-                    deletar_motorista(dados['motoristas'])
+                    deletar_motorista(dados['todos_onibus'])
                 
                 # opcao 4 - deletar fiscal
                 if (escolha_menu_deletar == "4"):
-                    deletar_fiscal(dados['fiscais'])
+                    deletar_fiscal(dados['todos_onibus'])
                     
                 # opcao 5 - voltar ao menu principal
                 if (escolha_menu_deletar == "5"):
