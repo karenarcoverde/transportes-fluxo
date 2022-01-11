@@ -202,7 +202,7 @@ def mostrar_fiscais (fiscais):
 
 def menu_adicionar ():  
     print()
-    print('##################### MENU ADICIONAR ############################################')
+    print('##################### MENU ADICIONAR RELAÇÃO #####################################')
     print("1. Motorista ao ônibus")
     print("2. Fiscal ao ônibus")
     print("3. ponto de parada ao ônibus")
@@ -379,7 +379,7 @@ def main():
             
             
             
-        # opcao 3 - adicionar:
+        # opcao 3 - adicionar relação:
         if (escolha_menu_principal == "3"):
             voltar_menu_principal = False
             
