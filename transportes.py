@@ -168,6 +168,10 @@ class Onibus:
                 print (" Rotas:")
                 for rota in todos_onibus[onibus].rotas:
                     print(f" {rota}")
+                print (" Preço total da Rota: ")     
+                # o preço será uma relação 1:1 da rota. Se rota: X pontos de parada, Preço: X reais
+                print (" " + str(len(todos_onibus[onibus].rotas)) + " real (is)")
+                    
                 print()
                 print(" Nome motorista:",todos_onibus[onibus].nomeMotorista)
                 print()
