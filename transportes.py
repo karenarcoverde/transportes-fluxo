@@ -149,12 +149,31 @@ def menu_adicionar ():
     return escolha
 
 # como so pode um motorista por onibus, eu so vou poder alterar o motorista que já está cadastrado
-def adicionar_motorista_ao_onibus ():
+def adicionar_motorista_ao_onibus (todos_onibus):
     print("Não implementado")
 
 # como so pode um fiscal por onibus ou nenhum fiscal, eu so vou poder alterar o fiscal que já está cadastrado
-def adicionar_fiscal_ao_onibus ():
-    print("Não implementado")
+def adicionar_fiscal_ao_onibus (todos_onibus):
+    tem_onibus = False
+    if (len(todos_onibus) > 0):
+        # nome do Ônibus
+        nome = input("Digite o nome do Ônibus que deseja adicionar o fiscal: ")  
+        # nome do Fiscal 
+        fiscal_nova = input("Digite o fiscal que deseja adicionar: ") 
+      
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].nome == nome):
+                todos_onibus[onibus].fiscal = fiscal_nova
+                tem_onibus = True
+            
+        if (tem_onibus == True):
+            print("\nFiscal adicionado\n")
+                
+        elif (tem_onibus == False):
+            print ("\nNão existe esse ônibus na lista! ")
+                
+    else:
+        print ("\nAinda não existem ônibus criados. ")
 
 
 # criei uma lista de rotas, entao cada onibus tem uma lista de rotas
@@ -433,11 +452,11 @@ def main():
                 
                 # opcao 1 - adicionar motorista ao ônibus:
                 if (escolha_menu_adicionar == "1"):
-                    adicionar_motorista_ao_onibus ()
+                    adicionar_motorista_ao_onibus (dados['todos_onibus'])
                 
                 # opcao 2 - adicionar fiscal ao ônibus
                 if (escolha_menu_adicionar == "2"):
-                    adicionar_fiscal_ao_onibus ()
+                    adicionar_fiscal_ao_onibus (dados['todos_onibus'])
                 
                 # opcao 3 - adicionar ponto de parada ao ônibus
                 if (escolha_menu_adicionar == "3"):
