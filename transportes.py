@@ -8,22 +8,28 @@ dados ={
 ############################################ Classe ##############################################
 
 class Onibus:
-    def __init__(self, nome,rotas,motorista,fiscal):
-        if ((isinstance(nome,str)) and (isinstance(rotas,list)) and (isinstance(motorista,str)) and (isinstance(fiscal,str))):
-            self.nome = nome
+    def __init__(self, nomeOnibus,rotas, nomeMotorista,idadeMotorista, idiomaMotorista, CPFMotorista, nomeFiscal, idadeFiscal, idiomaFiscal, CPFFiscal):
+        if ((isinstance(nomeOnibus,str)) and (isinstance(rotas,list)) and (isinstance(nomeMotorista,str)) and (isinstance(idadeMotorista,str)) and (isinstance(idiomaMotorista,str)) and (isinstance(CPFMotorista,str)) and (isinstance(nomeFiscal,str)) and (isinstance(idadeFiscal,str)) and (isinstance(idiomaFiscal,str)) and (isinstance(CPFFiscal,str))):
+            self.nomeOnibus = nomeOnibus
             self.rotas = rotas
-            self.motorista = motorista
-            self.fiscal = fiscal
+            self.nomeMotorista = nomeMotorista
+            self.idadeMotorista = idadeMotorista
+            self.idiomaFiscal = idiomaFiscal
+            self.CPFMotorista = CPFMotorista
+            self.nomeFiscal = nomeFiscal
+            self.idadeFiscal = idadeFiscal
+            self.idiomaFiscal = idiomaFiscal
+            self.CPFFiscal = CPFFiscal
             
         else:
             print("Algum atributo inválido! ")
         
     def __str__(self):
-        return f" Nome ônibus: {self.nome} \n Rotas: {self.rotas} \n Motorista: {self.motorista}  \n Fiscal: {self.fiscal}" 
+        return f" Nome ônibus: {self.nomeOnibus} \n Rotas: {self.rotas} \n Nome motorista: {self.nomeMotorista} \n Idade motorista: {self.idadeMotorista} \n Idioma motorista: {self.idiomaMotorista} \n  CPF motorista: {self.CPFMotorista} \n Nome fiscal: {self.nomeFiscal} \n Idade fiscal: {self.idadeFiscal} \n Idioma fiscal: {self.idiomaFiscal} \n  CPF fiscal: {self.CPFFiscal} \n" 
 
-    def setNome(self,nome):
-        if(isinstance(nome,str)):
-            self.nome = nome
+    def setNomeOnibus(self,nomeOnibus):
+        if(isinstance(nomeOnibus,str)):
+            self.nomeOnibus = nomeOnibus
         else:
             print("Tipo inválido para o nome do ônibus")
         
@@ -33,27 +39,63 @@ class Onibus:
         else:
             print("Tipo inválido para as rotas")
     
-    def setMotorista(self,motorista):
-        if(isinstance(motorista,str)):
-            self.motorista = motorista
+    def setNomeMotorista(self,nomeMotorista):
+        if(isinstance(nomeMotorista,str)):
+            self.nomeMotorista = nomeMotorista
         else:
             print("Tipo inválido para o nome do motorista")
+    
+    def setIdadeMotorista(self,idadeMotorista):
+        if(isinstance(idadeMotorista,str)):
+            self.idadeMotorista = idadeMotorista
+        else:
+            print("Tipo inválido para a idade do motorista")
+            
+    def setIdiomaMotorista(self,idiomaMotorista):
+        if(isinstance(idiomaMotorista,str)):
+            self.idiomaMotorista = idiomaMotorista
+        else:
+            print("Tipo inválido para o idioma do motorista")
+    
+    def setCPFMotorista(self,CPFMotorista):
+        if(isinstance(CPFMotorista,str)):
+            self.CPFMotorista = CPFMotorista
+        else:
+            print("Tipo inválido para o CPF do motorista")
  
-    def setFiscal(self,fiscal):
-        if(isinstance(fiscal,str)):
-            self.fiscal = fiscal
+    def setNomeFiscal(self,nomeFiscal):
+        if(isinstance(nomeFiscal,str)):
+            self.nomeFiscal = nomeFiscal
         else:
             print("Tipo inválido para o nome do fiscal")
+            
+    def setIdadeFiscal(self,idadeFiscal):
+        if(isinstance(idadeFiscal,str)):
+            self.idadeFiscal = idadeFiscal
+        else:
+            print("Tipo inválido para a idade do fiscal")
+            
+    def setIdiomaFiscal(self,idiomaFiscal):
+        if(isinstance(idiomaFiscal,str)):
+            self.idiomaFiscal = idiomaFiscal
+        else:
+            print("Tipo inválido para o idioma do fiscal")
+    
+    def setCPFFiscal(self,CPFFiscal):
+        if(isinstance(CPFFiscal,str)):
+            self.CPFFiscal = CPFFiscal
+        else:
+            print("Tipo inválido para o CPF do fiscal")
     
     def criar_onibus (self):
         rotas =[]
     
         # colocando atributos vazios
-        onibusAux = Onibus("",[],"","")
+        onibusAux = Onibus("",[],"","","","","","","","")
         
         # nome do Ônibus
-        nome = input("Digite o nome do Ônibus: ")   
-        onibusAux.setNome(nome)
+        nome_onibus = input("Digite o nome do Ônibus: ")   
+        onibusAux.setNomeOnibus(nome_onibus)
         
         # nome do Ponto de parada
         parada = input("Digite SOMENTE um nome do Ponto de parada: ")
@@ -61,12 +103,37 @@ class Onibus:
         onibusAux.setRotas(rotas)
         
         # nome do Motorista
-        motorista = input("Digite o nome do Motorista: ")   
-        onibusAux.setMotorista(motorista)
+        nomeMotorista = input("Digite o nome do Motorista: ")   
+        onibusAux.setNomeMotorista(nomeMotorista)
+        
+        # idade do Motorista
+        idadeMotorista = input("Digite a idade do Motorista: ")   
+        onibusAux.setIdadeMotorista(idadeMotorista)
+        
+        # idioma do Motorista
+        idiomaMotorista = input("Digite o idioma do Motorista: ")   
+        onibusAux.setIdiomaMotorista(idiomaMotorista)
+        
+        # CPF do Motorista
+        CPFMotorista = input("Digite o CPF do Motorista: ")   
+        onibusAux.setCPFMotorista(CPFMotorista)
         
         # nome do Fiscal
-        fiscal = input("Digite o nome do Fiscal: ")   
-        onibusAux.setFiscal(fiscal)
+        nomeFiscal = input("Digite o nome do Fiscal: ")   
+        onibusAux.setNomeFiscal(nomeFiscal)
+        
+        # idade do Fiscal
+        idadeFiscal = input("Digite a idade do Fiscal: ")   
+        onibusAux.setIdadeFiscal(idadeFiscal)
+        
+        # idioma do Fiscal
+        idiomaFiscal = input("Digite o idioma do Fiscal: ")   
+        onibusAux.setIdiomaFiscal(idiomaFiscal)
+        
+        # CPF do Fiscal
+        CPFFiscal = input("Digite o CPF do Fiscal: ")   
+        onibusAux.setCPFFiscal(CPFFiscal)
+        
         
         print ("\n Ônibus criado com sucesso!\n ")
         return onibusAux
@@ -74,13 +141,20 @@ class Onibus:
     # mostra as informacoes do onibus depois de criá-lo
     def mostrar_onibus (self,onibus):
         print ("---------------------------------------")
-        print(f" Nome do ônibus: {onibus.nome}\n") 
+        print(f" Nome do ônibus: {onibus.nomeOnibus}\n") 
         print(" Ponto de parada:") 
         for rota in onibus.rotas:
             print(f" {rota}")
             
-        print(f"\n Motorista: {onibus.motorista}\n") 
-        print(f" Fiscal: {onibus.fiscal}") 
+        print(f"\n Nome motorista: {onibus.nomeMotorista} \n") 
+        print(f"\n Idade motorista: {onibus.idadeMotorista} \n") 
+        print(f"\n Idioma motorista: {onibus.idiomaMotorista} \n")
+        print(f"\n CPF motorista: {onibus.CPFMotorista} \n") 
+        print()
+        print(f"\n Nome fiscal: {onibus.nomeFiscal} \n") 
+        print(f"\n Idade fiscal: {onibus.idadeFiscal} \n") 
+        print(f"\n Idioma fiscal: {onibus.idiomaFiscal} \n")
+        print(f"\n CPF fiscal: {onibus.CPFFiscal} \n") 
         print ("---------------------------------------")
 
     # mostra a lista com todos os onibus e suas respectivas informacoes
@@ -89,15 +163,28 @@ class Onibus:
             for onibus in todos_onibus:
                 print()
                 print ("---------------------------------------")
-                print(" Nome ônibus:",todos_onibus[onibus].nome)
+                print(" Nome ônibus:",todos_onibus[onibus].nomeOnibus)
                 print()
                 print (" Rotas:")
                 for rota in todos_onibus[onibus].rotas:
                     print(f" {rota}")
                 print()
-                print(" Motorista:",todos_onibus[onibus].motorista)
+                print(" Nome motorista:",todos_onibus[onibus].nomeMotorista)
                 print()
-                print(" Fiscal:",todos_onibus[onibus].fiscal)
+                print(" Idade motorista:",todos_onibus[onibus].idadeMotorista)
+                print()
+                print(" Idioma motorista:",todos_onibus[onibus].idiomaMotorista)
+                print()
+                print(" CPF motorista:",todos_onibus[onibus].CPFMotorista)
+                print()
+                print(" Nome fiscal:",todos_onibus[onibus].nomeFiscal)
+                print()
+                print(" Idade fiscal:",todos_onibus[onibus].idadeFiscal)
+                print()
+                print(" Idioma fiscal:",todos_onibus[onibus].idiomaFiscal)
+                print()
+                print(" CPF fiscal:",todos_onibus[onibus].CPFFiscal)
+                print()
                 print()
                 print ("---------------------------------------")
                 
@@ -111,13 +198,22 @@ class Onibus:
         
         if (len(todos_onibus) > 0):
             # nome do Ônibus
-            nome = input("Digite o nome do Ônibus que deseja adicionar o motorista: ")  
+            nome_onibus = input("Digite o nome do Ônibus que deseja adicionar o motorista: ")  
             # nome do Motorista
-            motorista_nova = input("Digite o motorista que deseja adicionar: ") 
+            motorista_nova_nome = input("Digite o nome do motorista que deseja adicionar: ") 
+            # idade do Motorista
+            motorista_nova_idade = input("Digite a idade do motorista que deseja adicionar: ")
+            # idioma do Motorista
+            motorista_nova_idioma = input("Digite a idioma do motorista que deseja adicionar: ")
+            # CPF do Motorista
+            motorista_nova_CPF = input("Digite o CPF do motorista que deseja adicionar: ")
           
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].nome == nome):
-                    todos_onibus[onibus].motorista = motorista_nova
+                if (todos_onibus[onibus].nomeOnibus == nome_onibus):
+                    todos_onibus[onibus].nomeMotorista = motorista_nova_nome
+                    todos_onibus[onibus].idadeMotorista = motorista_nova_idade
+                    todos_onibus[onibus].idiomaMotorista = motorista_nova_idioma
+                    todos_onibus[onibus].CPFMotorista = motorista_nova_CPF
                     tem_onibus = True
                 
             if (tem_onibus == True):
@@ -135,15 +231,24 @@ class Onibus:
         tem_onibus = False
         
         if (len(todos_onibus) > 0):
-            # nome do Ônibus
-            nome = input("Digite o nome do Ônibus que deseja adicionar o fiscal: ")  
-            # nome do Fiscal 
-            fiscal_nova = input("Digite o fiscal que deseja adicionar: ") 
+             # nome do Ônibus
+            nome_onibus = input("Digite o nome do Ônibus que deseja adicionar o fiscal: ")  
+            # nome do fiscal
+            fiscal_nova_nome = input("Digite o nome do fiscal que deseja adicionar: ") 
+            # idade do fiscal
+            fiscal_nova_idade = input("Digite a idade do fiscal que deseja adicionar: ")
+            # idioma do fiscal
+            fiscal_nova_idioma = input("Digite a idioma do fiscal que deseja adicionar: ")
+            # CPF do fiscal
+            fiscal_nova_CPF = input("Digite o CPF do fiscal que deseja adicionar: ")
           
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].nome == nome):
-                    todos_onibus[onibus].fiscal = fiscal_nova
-                    tem_onibus = True
+                if (todos_onibus[onibus].nomeOnibus == nome_onibus):
+                    todos_onibus[onibus].nomeFiscal = fiscal_nova_nome
+                    todos_onibus[onibus].idadeFiscal = fiscal_nova_idade
+                    todos_onibus[onibus].idiomaFiscal = fiscal_nova_idioma
+                    todos_onibus[onibus].CPFFiscal = fiscal_nova_CPF
+                    tem_onibus = True  
                 
             if (tem_onibus == True):
                 print("\nFiscal adicionado\n")
@@ -162,12 +267,12 @@ class Onibus:
         
         if (len(todos_onibus) > 0):
             # nome do Ônibus
-            nome = input("Digite o nome do Ônibus que deseja adicionar ponto de parada: ")  
+            nome_onibus = input("Digite o nome do Ônibus que deseja adicionar ponto de parada: ")  
             # nome do Ponto de parada
             parada = input("Digite SOMENTE um nome do Ponto de parada que deseja adicionar ao ônibus escolhido: ")
             parada_nova.append(parada)
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].nome == nome):
+                if (todos_onibus[onibus].nomeOnibus == nome_onibus):
                     todos_onibus[onibus].rotas += parada_nova
                     tem_onibus = True
                     
@@ -186,11 +291,11 @@ class Onibus:
         tem_onibus = False
         if (len(todos_onibus) > 0):
             # nome do Ônibus
-            nome = input("Digite o nome do ônibus que deseja alterar: ")   
+            nome_onibus = input("Digite o nome do ônibus que deseja alterar: ")   
             nome_nova = input("Digite o NOVO nome do ônibus: ")  
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].nome == nome):
-                    todos_onibus[onibus].nome = nome_nova
+                if (todos_onibus[onibus].nomeOnibus == nome_onibus):
+                    todos_onibus[onibus].nomeOnibus = nome_nova
                     tem_onibus = True
                     
                     
@@ -228,13 +333,19 @@ class Onibus:
         tem_motorista = False
         if (len(todos_onibus) > 0):
             # nome do Motorista
-            motorista = input("Digite o nome do motorista que deseja alterar: ")   
-            motorista_nova = input("Digite o NOVO nome do motorista: ")  
+            nome_motorista = input("Digite o nome do motorista que deseja alterar: ")   
+            motorista_nova_nome = input("Digite o NOVO nome do motorista: ") 
+            motorista_nova_idade = input("Digite a NOVA idade do motorista: ") 
+            motorista_nova_idioma = input("Digite o NOVO idioma do motorista: ")
+            motorista_nova_CPF = input("Digite a NOVO CPF do motorista: ") 
+            
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].motorista == motorista):
-                    todos_onibus[onibus].motorista = motorista_nova
+                if (todos_onibus[onibus].nomeMotorista == nome_motorista):
+                    todos_onibus[onibus].nomeMotorista = motorista_nova_nome
+                    todos_onibus[onibus].idadeMotorista = motorista_nova_idade
+                    todos_onibus[onibus].idiomaMotorista = motorista_nova_idioma
+                    todos_onibus[onibus].CPFMotorista = motorista_nova_CPF
                     tem_motorista = True
-                    
                     
             if (tem_motorista == True):
                 print("\nMotorista alterado!\n")
@@ -249,12 +360,18 @@ class Onibus:
         tem_fiscal = False
         if (len(todos_onibus) > 0):
             # nome do Fiscal
-            fiscal = input("Digite o nome do fiscal que deseja alterar: ")   
-            fiscal_nova = input("Digite o NOVO nome do fiscal: ") 
-          
+            nome_fiscal = input("Digite o nome do fiscal que deseja alterar: ")   
+            fiscal_nova_nome = input("Digite o NOVO nome do fiscal: ") 
+            fiscal_nova_idade = input("Digite a NOVA idade do fiscal: ") 
+            fiscal_nova_idioma = input("Digite o NOVO idioma do fiscal: ")
+            fiscal_nova_CPF = input("Digite a NOVO CPF do fiscal: ") 
+            
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].fiscal == fiscal):
-                    todos_onibus[onibus].fiscal = fiscal_nova
+                if (todos_onibus[onibus].nomeFiscal == nome_fiscal):
+                    todos_onibus[onibus].nomeFiscal = fiscal_nova_nome
+                    todos_onibus[onibus].idadeFiscal = fiscal_nova_idade
+                    todos_onibus[onibus].idiomaFiscal = fiscal_nova_idioma
+                    todos_onibus[onibus].CPFMotorista = fiscal_nova_CPF
                     tem_fiscal = True
                 
             if (tem_fiscal == True):
@@ -271,10 +388,10 @@ class Onibus:
         tem_onibus = False
         if (len(todos_onibus) > 0):
             # nome do Ônibus
-            nome = input("Digite o nome do ônibus: ")   
+            nome_onibus = input("Digite o nome do ônibus: ")   
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].nome == nome):
-                    todos_onibus[onibus].nome = "-"
+                if (todos_onibus[onibus].nomeOnibus == nome_onibus):
+                    todos_onibus[onibus].nomeOnibus = "-"
                     tem_onibus = True
                     
                     
@@ -288,17 +405,19 @@ class Onibus:
             print ("\nAinda não existem ônibus criados. ")
      
     def deletar_ponto_de_parada (self, todos_onibus): 
-         
+        i = 0
         tem_parada = False
         if (len(todos_onibus) > 0):
             # nome do Ponto de parada
             parada = input("Digite o nome do Ponto de parada que deseja deletar: ")
             for onibus in todos_onibus:
-                for i in range (len(todos_onibus[onibus].rotas)):
+                while (i < (len(todos_onibus[onibus].rotas))):
                     if (todos_onibus[onibus].rotas[i] == parada):
                         del todos_onibus[onibus].rotas[i]          
                         tem_parada = True
-                        pass
+                    i+= 1
+                i = 0
+                    
                     
                     
             if (tem_parada == True):
@@ -314,10 +433,13 @@ class Onibus:
         tem_motorista = False
         if (len(todos_onibus) > 0):
             # nome do Motorista
-            motorista = input("Digite o nome do Motorista: ")   
+            nome_motorista = input("Digite o nome do Motorista: ")   
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].motorista == motorista):
-                    todos_onibus[onibus].motorista = "-"
+                if (todos_onibus[onibus].nomeMotorista == nome_motorista):
+                    todos_onibus[onibus].nomeMotorista = "-"
+                    todos_onibus[onibus].idadeMotorista = "-"
+                    todos_onibus[onibus].idiomaMotorista = "-"
+                    todos_onibus[onibus].CPFMotorista = "-"
                     tem_motorista = True
                     
                     
@@ -334,10 +456,13 @@ class Onibus:
         tem_fiscal = False
         if (len(todos_onibus) > 0):
             # nome do Fiscal
-            fiscal = input("Digite o nome do Fiscal: ")   
+            nome_fiscal = input("Digite o nome do Fiscal: ")   
             for onibus in todos_onibus:
-                if (todos_onibus[onibus].fiscal == fiscal):
-                    todos_onibus[onibus].fiscal = "-"
+                if (todos_onibus[onibus].nomeFiscal == nome_fiscal):
+                    todos_onibus[onibus].nomeFiscal = "-"
+                    todos_onibus[onibus].idadeFiscal = "-"
+                    todos_onibus[onibus].idiomaFiscal = "-"
+                    todos_onibus[onibus].CPFFiscal = "-"
                     tem_fiscal = True
                 
             if (tem_fiscal == True):
@@ -442,7 +567,7 @@ def main():
     sair_do_programa = False
     
     # colocando atributos vazios
-    onibusObject = Onibus("",[],"","")
+    onibusObject = Onibus("",[],"","","","","","","","")
 
 
     while (sair_do_programa == False):
@@ -452,7 +577,7 @@ def main():
         # opcao 1 - criar Ônibus, ponto de parada, motorista, fiscal:
         if (escolha_menu_principal == "1"):
             onibusAux = onibusObject.criar_onibus ()
-            dados["todos_onibus"][onibusAux.nome] = onibusAux
+            dados["todos_onibus"][onibusAux.nomeOnibus] = onibusAux
             onibusObject.mostrar_onibus(onibusAux)
             
         
