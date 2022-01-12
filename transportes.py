@@ -228,13 +228,13 @@ def alterar_ponto_de_parada (todos_onibus):
     tem_parada = False
     if (len(todos_onibus) > 0):
         # nome do Ponto de parada
-        parada = input("Digite o nome do Ponto de parada que deseja alterar: ")   
-        parada_nova = input("Digite o NOVO nome do Ponto de parada: ")  
+        parada = input("Digite o nome do Ponto de parada que deseja alterar: ")
+        parada_nova = input("Digite o NOVO nome do ponto de parada: ") 
         for onibus in todos_onibus:
-            if (todos_onibus[onibus].rotas == parada):
-                todos_onibus[onibus].rotas = parada_nova
-                tem_parada = True
-                
+            for i in range (len(todos_onibus[onibus].rotas)):
+                if (todos_onibus[onibus].rotas[i] == parada):
+                    todos_onibus[onibus].rotas[i] = parada_nova
+                    tem_parada = True
                 
         if (tem_parada == True):
             print("\nPonto de parada alterado!\n")
@@ -342,7 +342,7 @@ def deletar_ponto_de_parada (todos_onibus):
                 if (todos_onibus[onibus].rotas[i] == parada):
                     del todos_onibus[onibus].rotas[i]          
                     tem_parada = True
-                break
+                    pass
                 
                 
         if (tem_parada == True):
