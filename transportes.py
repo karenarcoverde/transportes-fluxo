@@ -150,7 +150,27 @@ def menu_adicionar ():
 
 # como so pode um motorista por onibus, eu so vou poder alterar o motorista que já está cadastrado
 def adicionar_motorista_ao_onibus (todos_onibus):
-    print("Não implementado")
+    tem_onibus = False
+    if (len(todos_onibus) > 0):
+        # nome do Ônibus
+        nome = input("Digite o nome do Ônibus que deseja adicionar o motorista: ")  
+        # nome do Motorista
+        motorista_nova = input("Digite o motorista que deseja adicionar: ") 
+      
+        for onibus in todos_onibus:
+            if (todos_onibus[onibus].nome == nome):
+                todos_onibus[onibus].motorista = motorista_nova
+                tem_onibus = True
+            
+        if (tem_onibus == True):
+            print("\nMotorista adicionado\n")
+                
+        elif (tem_onibus == False):
+            print ("\nNão existe esse ônibus na lista! ")
+                
+    else:
+        print ("\nAinda não existem ônibus criados. ")
+
 
 # como so pode um fiscal por onibus ou nenhum fiscal, eu so vou poder alterar o fiscal que já está cadastrado
 def adicionar_fiscal_ao_onibus (todos_onibus):
