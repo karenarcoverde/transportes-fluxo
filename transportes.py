@@ -60,6 +60,13 @@ def menu_principal ():
     print("6. Sair do Programa")
     print('#################################################################################')
     print()
+    print ("OBS:")
+    print ("1. Quando não possuir informação sobre algo, preencha com: - ")
+    print ("2. As paradas são feitas em ordem")
+    print ("3. Um motorista não pode dirigir mais de um ônibus, igual com o fiscal")
+    print ("4. Vários ônibus podem parar em um mesmo ponto, mas um ônibus não pode parar mais de uma vez em qualquer ponto")
+    print ("5. Cada ônibus tem um motorista e nem sempre um fiscal")
+    print()
     
     escolha = input("Digite o número da opção desejada: ")
     
